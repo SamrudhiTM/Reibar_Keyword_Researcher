@@ -1,11 +1,9 @@
 const BASE = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "");
-const TOKEN = import.meta.env.VITE_API_TOKEN || "";
 
 export async function api(path, options = {}) {
   const res = await fetch(`${BASE}${path}`, {
     ...options,
     headers: {
-      Authorization: `Bearer ${TOKEN}`,
       "Content-Type": "application/json",
       "ngrok-skip-browser-warning": "true",
       ...(options.headers || {}),
